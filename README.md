@@ -15,6 +15,7 @@
 
 <p align="center">
   <a href="https://noxroute.vercel.app"><img src="https://img.shields.io/badge/Live_dApp-noxroute.vercel.app-ff5b65?style=for-the-badge" alt="Live NoxRoute dApp" /></a>
+  <a href="https://youtu.be/FO2gnDvUzoA"><img src="https://img.shields.io/badge/Demo_Video-YouTube-ff0000?style=for-the-badge" alt="NoxRoute demo video" /></a>
   <img src="https://img.shields.io/badge/Network-Ethereum_Sepolia-627eea?style=for-the-badge" alt="Ethereum Sepolia" />
   <img src="https://img.shields.io/badge/Privacy-iExec_Nox-00c99a?style=for-the-badge" alt="iExec Nox" />
   <img src="https://img.shields.io/badge/Settlement-Uniswap_V3-ff007a?style=for-the-badge" alt="Uniswap V3" />
@@ -22,11 +23,13 @@
 
 <p align="center">
   <a href="https://noxroute.vercel.app">Open the dApp</a>
-  ·
+  &middot;
+  <a href="https://youtu.be/FO2gnDvUzoA">Watch the demo video</a>
+  &middot;
   <a href="SUBMISSION.md">Submission brief</a>
-  ·
+  &middot;
   <a href="evidence/README.md">Evidence ledger</a>
-  ·
+  &middot;
   <a href="demo-script.md">Demo script</a>
 </p>
 
@@ -64,6 +67,7 @@ decides when and how to use it does not become public calldata.
 | **Epoch cadence** | 5 minutes |
 | **Current capacity** | Up to 8 active strategies per epoch |
 | **Live dApp** | [noxroute.vercel.app](https://noxroute.vercel.app) |
+| **Demo video** | [YouTube walkthrough](https://youtu.be/FO2gnDvUzoA) |
 | **Evidence status** | Local Nox, browser UI, MetaMask flow, and multi-wallet Sepolia E2E recorded |
 
 ## Why Nox is load-bearing
