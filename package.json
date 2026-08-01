@@ -23,6 +23,7 @@
     "dapp": "python -m http.server 5173 --directory dapp",
     "dapp:test": "python -m http.server 4173 --directory dapp",
     "dapp:demo": "node scripts/demo-server.mjs",
+    "voice:colab": "python scripts/make_colab_cell.py --mode design --text demo-video/narration.txt --output noxroute-narration.wav --save demo-video/omnivoice_colab_cell.py --include-setup",
     "docs:render:v3": "node scripts/render-v3-doc-links.mjs",
     "docs:check:v3": "node scripts/render-v3-doc-links.mjs --check"
   },

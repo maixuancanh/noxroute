@@ -14,6 +14,9 @@ playwright-report/
 *.log
 *.tmp
 *.tsbuildinfo
+__pycache__/
+*.pyc
+demo-video/.omnivoice-profile-history.json
 
 .DS_Store
 Thumbs.db
