@@ -1,0 +1,410 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#050606" />
+    <title>NoxRoute - Private Strategy Router on Uniswap</title>
+    <link rel="icon" type="image/png" href="./assets/noxroute-logo.png" />
+    <link rel="stylesheet" href="./styles.css?v=v3-how-copy-3" />
+    <link rel="modulepreload" href="./v3-chain.js" />
+    <link rel="modulepreload" href="./v3-privacy.js" />
+  </head>
+  <body>
+    <a class="skip-link" href="#strategyComposer">Skip to strategy composer</a>
+    <div class="space-background" aria-hidden="true">
+      <span class="nebula nebula-left"></span>
+      <span class="nebula nebula-top"></span>
+      <span class="star-layer stars-near"></span>
+      <span class="star-layer stars-far"></span>
+      <span class="signal-grid"></span>
+    </div>
+
+    <div class="app-shell">
+      <header class="top-nav">
+        <a class="brand" href="#home" data-page-link="home" aria-label="NoxRoute home">
+          <img src="./assets/noxroute-logo.png" width="40" height="40" alt="NoxRoute" />
+          <span>NoxRoute</span>
+        </a>
+        <nav aria-label="Primary navigation">
+          <a class="nav-link active" href="#home" data-page-link="home">Home</a>
+          <a class="nav-link" href="#trade" data-page-link="trade">Trade</a>
+          <a class="nav-link" href="#how-it-works" data-page-link="how">How it works</a>
+          <a class="nav-link" href="#contracts" data-page-link="contracts">Contracts</a>
+        </nav>
+        <div class="wallet-area">
+          <button id="accountPill" class="account-pill" type="button" aria-haspopup="menu" aria-expanded="false">
+            <span id="walletDot" class="status-dot neutral" aria-hidden="true"></span>
+            <span id="walletStatus">Connect wallet</span>
+          </button>
+          <div id="accountMenu" class="account-menu hidden" role="menu">
+            <code id="accountFull">Not connected</code>
+            <button id="disconnectWallet" type="button" role="menuitem">Disconnect</button>
+          </div>
+        </div>
+      </header>
+
+      <main id="homePage" class="home-page page-view" data-page="home" aria-labelledby="homeTitle">
+        <section class="home-hero">
+          <div class="home-copy-panel">
+            <span class="home-kicker">iExec Nox - Ethereum Sepolia - Uniswap V3</span>
+            <h1 id="homeTitle"><span>Private swap routes</span><span>without public strategy leaks.</span></h1>
+            <p>Public DEXs expose direction, size, limits, cadence and remaining budget by default. NoxRoute encrypts the strategy first, lets Nox compute private matching and allocations, then reveals only the aggregate residual that must settle on official Uniswap V3.</p>
+            <div class="home-actions">
+              <a class="hero-action primary" href="#trade" data-page-link="trade">Open private route</a>
+              <a class="hero-action secondary" href="#how-it-works" data-page-link="how">Watch the flow</a>
+            </div>
+            <p class="home-proof-line">Real Sepolia contracts - official WETH/USDC - Chainlink ETH/USD quote preview</p>
+          </div>
+
+          <div class="home-shield-card" aria-label="Private swap telemetry preview">
+            <div class="shield-orbit" aria-hidden="true"><span></span><span></span><span></span></div>
+            <div class="shield-card-head"><span>Encrypted route</span><strong>handle-only calldata</strong></div>
+            <div class="shield-metric-grid">
+              <div><span>Direction</span><strong>hidden</strong></div>
+              <div><span>Clip limit</span><strong>hidden</strong></div>
+              <div><span>Public residual</span><strong>aggregate</strong></div>
+            </div>
+            <div class="route-pulse-line" aria-hidden="true"><span>Wallet</span><i></i><span>Nox</span><i></i><span>Uniswap</span></div>
+          </div>
+        </section>
+
+        <section class="home-story-grid" aria-label="NoxRoute product story">
+          <article class="story-card hunted-card">
+            <span class="story-index">01 / The leak</span>
+            <h2>Public recurring swaps turn strategy into a target.</h2>
+            <p>Transparent calldata and token transfers let observers infer trading direction, recurring cadence, remaining budget and sensitive limits.</p>
+            <ul><li>Wallet-level trackers can follow repeated clips.</li><li>Plain limits expose where a strategy will stop.</li><li>Small private batches reveal intent when matching happens too late.</li></ul>
+          </article>
+          <article class="story-card shield-card">
+            <span class="story-index">02 / The Nox route</span>
+            <h2>Encrypt the intent, settle only the remainder.</h2>
+            <p>NoxRoute makes Nox load-bearing: strategy rules become encrypted handles, Nox nets opposing private flow, and only the unmatched aggregate touches Uniswap.</p>
+            <ul><li>Private budget, direction, clip, limit and slippage.</li><li>Persistent encrypted state across epochs.</li><li>Official Uniswap V3 settlement remains unmodified.</li></ul>
+          </article>
+        </section>
+
+        <section class="primitive-strip" aria-label="Nox primitives used by NoxRoute">
+          <div><span>01</span><strong>Browser encryption</strong><p>Plain strategy values are encrypted into Nox handles before calldata.</p></div>
+          <div><span>02</span><strong>TEE compute</strong><p>Nox evaluates private eligibility, matching and allocation.</p></div>
+          <div><span>03</span><strong>Selective reveal</strong><p>Only aggregate settlement fields are revealed for the public route.</p></div>
+          <div><span>04</span><strong>Public composability</strong><p>Uniswap V3 is used through its normal router and pool.</p></div>
+        </section>
+
+        <section class="honesty-panel">
+          <span class="eyebrow">Honest privacy boundary</span>
+          <h2>NoxRoute does not claim invisibility. It protects the strategy.</h2>
+          <p>ERC-20 deposits, wallet interactions and final aggregate settlements are still public. The value comes from protecting the strategy data observers usually exploit: direction, budget rules, per-user allocations, matched volume and remaining balance.</p>
+        </section>
+      </main>
+      <main id="tradePage" class="product-layout page-view hidden" data-page="trade">
+        <section class="composer-column" aria-labelledby="productTitle">
+          <div class="route-banner">
+            <span class="route-kicker">Confidential recurring execution</span>
+            <strong id="productTitle">Nox encrypted strategy <span aria-hidden="true">-&gt;</span> Uniswap V3</strong>
+            <ul class="nox-job-line" aria-label="Why Nox is required">
+              <li>Persistent private state</li>
+              <li>Encrypted eligibility</li>
+              <li>Opposing-flow netting</li>
+              <li>Private allocation and remaining balances</li>
+            </ul>
+          </div>
+
+          <section id="strategyComposer" class="strategy-card" aria-label="Create a private strategy">
+            <div class="card-toolbar">
+              <div class="mode-switch" role="tablist" aria-label="Strategy mode">
+                <button id="instantMode" class="mode-button active" type="button" role="tab" aria-selected="true">Instant</button>
+                <button id="dcaMode" class="mode-button" type="button" role="tab" aria-selected="false">Stealth DCA</button>
+              </div>
+              <span id="networkBadge" class="network-badge"><span class="status-dot neutral"></span>Sepolia</span>
+            </div>
+
+            <div class="pair-shell">
+              <div class="pair-head">
+                <span>You deposit</span>
+                <span id="publicWalletBalance">Wallet balance -</span>
+              </div>
+              <div class="amount-row">
+                <label class="sr-only" for="budgetInput">Private budget</label>
+                <input id="budgetInput" inputmode="decimal" autocomplete="off" value="0.001" aria-describedby="budgetHelp budgetError" />
+                <div class="token-chip" aria-label="Input token">
+                  <img id="inputTokenIcon" src="./assets/weth-token.png" width="32" height="32" alt="WETH token mark" />
+                  <span id="inputTokenSymbol">WETH</span>
+                </div>
+              </div>
+              <div class="amount-presets" role="group" aria-label="Budget percentage presets">
+                <button type="button" data-budget-percent="25">25%</button>
+                <button type="button" data-budget-percent="50">50%</button>
+                <button type="button" data-budget-percent="100">Max</button>
+              </div>
+              <div class="pair-foot">
+                <span id="budgetHelp">Private budget</span>
+                <span id="confidentialVaultBalance">Confidential vault -</span>
+              </div>
+              <p id="budgetError" class="field-error" role="alert"></p>
+            </div>
+
+            <button id="flipDirection" class="flip-direction" type="button" aria-label="Reverse WETH and USDC direction">
+              <span aria-hidden="true">&#8597;</span>
+            </button>
+
+            <div class="pair-shell output-shell">
+              <div class="pair-head">
+                <span>Strategy receives</span>
+                <span>Encrypted vault credit</span>
+              </div>
+              <div class="amount-row">
+                <output id="estimatedOutput" class="estimated-output">-</output>
+                <div class="token-chip" aria-label="Output token">
+                  <img id="outputTokenIcon" src="./assets/usdc-token.png" width="32" height="32" alt="USDC token mark" />
+                  <span id="outputTokenSymbol">USDC</span>
+                </div>
+              </div>
+              <div class="pair-foot">
+                <span>Market estimate, not a public per-user quote</span>
+                <span id="twapPrice">Market rate -</span>
+              </div>
+            </div>
+
+            <fieldset id="privateControls" class="private-controls">
+              <legend>Encrypted strategy rules</legend>
+              <label>
+                <span>Clip per epoch</span>
+                <input id="clipInput" inputmode="decimal" autocomplete="off" value="0.0005" />
+                <small>How much Nox may evaluate each epoch.</small>
+              </label>
+              <label>
+                <span>Private limit</span>
+                <input id="limitInput" inputmode="decimal" autocomplete="off" value="2500" />
+                <small>WETH price bound in USDC.</small>
+              </label>
+              <label>
+                <span>Private slippage</span>
+                <span class="input-suffix"><input id="slippageInput" inputmode="numeric" autocomplete="off" value="100" /><em>bps</em></span>
+                <small>Combined privately with the execution bound.</small>
+              </label>
+            </fieldset>
+
+            <div id="depositDisclosure" class="boundary-note">
+              <span class="boundary-mark" aria-hidden="true">i</span>
+              <p><strong>Public deposit boundary.</strong> ERC-20 deposit amounts are public. Your strategy budget, rules, direction, remaining balance and allocations are encrypted by Nox before strategy calldata is sent.</p>
+            </div>
+
+            <div class="quote-strip" aria-live="polite">
+              <div><span>Execution</span><strong id="executionMode">One encrypted clip</strong></div>
+              <div><span>Network fee</span><strong>Wallet estimate</strong></div>
+              <div><span>Settlement</span><strong>Residual on Uniswap</strong></div>
+            </div>
+
+            <p id="actionStatus" class="action-status" aria-live="polite">Connect a wallet to create a Nox strategy.</p>
+            <button id="primaryStrategyAction" class="primary-action" type="button">Connect wallet</button>
+          </section>
+
+          <section id="strategyWorkspace" class="strategy-workspace hidden" aria-labelledby="workspaceTitle">
+            <div>
+              <span class="eyebrow">Active private strategy</span>
+              <h2 id="workspaceTitle">Waiting for the next epoch</h2>
+              <p id="strategySummary">The strategy is stored as persistent Nox handles.</p>
+            </div>
+            <div class="workspace-actions">
+              <button id="advanceEpoch" class="secondary-button" type="button">Advance epoch</button>
+              <button id="revealPrivateState" class="ghost-button" type="button">Reveal private state</button>
+            </div>
+          </section>
+        </section>
+
+        <aside class="insight-column">
+          <section class="insight-card epoch-card">
+            <div class="section-title">
+              <div><span class="eyebrow">Live system</span><h2>Epoch pulse</h2></div>
+              <span id="epochPulse" class="pulse-status"><span></span>Idle</span>
+            </div>
+            <dl class="metric-list">
+              <div><dt>Status</dt><dd id="epochStatus">No epoch locked</dd></div>
+              <div><dt>Participants</dt><dd id="participantCount">0 / 8</dd></div>
+              <div><dt>Current epoch</dt><dd id="currentEpoch">-</dd></div>
+            </dl>
+          </section>
+
+          <section class="insight-card privacy-savings">
+            <div class="section-title">
+              <div><span class="eyebrow">Owner-authorized view</span><h2>Privacy savings</h2></div>
+              <span id="savingsLock" class="locked-badge">Locked</span>
+            </div>
+            <div class="savings-grid">
+              <div><span>Private requested</span><strong id="privateRequested">&bull;&bull;&bull;&bull;</strong></div>
+              <div><span>Internally matched</span><strong id="internallyMatched">&bull;&bull;&bull;&bull;</strong></div>
+              <div><span>Public residual</span><strong id="publicResidual">-</strong></div>
+            </div>
+            <p>Requested and matched volume use viewer-only ACLs. Only the aggregate residual is publicly decrypted for settlement.</p>
+          </section>
+
+        </aside>
+      </main>
+
+      <section id="howPage" class="how-page page-view hidden" data-page="how" aria-labelledby="howTitle">
+        <div class="how-hero">
+          <h1 id="howTitle">Why Nox belongs inside a swap flow.</h1>
+          <div class="how-copy">
+            <p>Nox encrypts the swap intent before any strategy calldata is submitted: direction, budget, limit, slippage and per-epoch rules become private handles instead of plain public parameters.</p>
+            <p>That matters because Uniswap V3 and ERC-20 transfers are transparent by design. Nox lets users keep trading strategy private while still settling through the official public market: private matching and netting happen first, then only the aggregate settlement that must touch Uniswap is revealed on-chain.</p>
+          </div>
+        </div>
+
+        <div class="how-stage" aria-label="NoxRoute protocol flow demo">
+          <section class="how-map" aria-live="polite">
+            <div class="how-flow-strip" aria-hidden="true">
+              <span class="how-flow-rail"></span>
+              <span class="how-flow-step active" data-how-flow-step="0">01</span>
+              <span class="how-flow-step" data-how-flow-step="1">02</span>
+              <span class="how-flow-step" data-how-flow-step="2">03</span>
+              <span class="how-flow-step" data-how-flow-step="3">04</span>
+              <span class="how-flow-step" data-how-flow-step="4">05</span>
+              <span class="how-flow-step" data-how-flow-step="5">06</span>
+            </div>
+            <article class="how-node active" data-how-step="0">
+              <span class="how-icon">01</span>
+              <div><h2>Wallet deposit</h2><p>Only the ERC-20 funding amount is public.</p></div>
+            </article>
+            <article class="how-node" data-how-step="1">
+              <span class="how-icon">02</span>
+              <div><h2>Nox encryption</h2><p>Budget, clip, limit, slippage and direction become encrypted handles.</p></div>
+            </article>
+            <article class="how-node" data-how-step="2">
+              <span class="how-icon">03</span>
+              <div><h2>Private vault</h2><p>Persistent Nox state tracks remaining budget and eligibility privately.</p></div>
+            </article>
+            <article class="how-node" data-how-step="3">
+              <span class="how-icon">04</span>
+              <div><h2>Batch matching</h2><p>Opposing private flows are netted before touching the public market.</p></div>
+            </article>
+            <article class="how-node" data-how-step="4">
+              <span class="how-icon">05</span>
+              <div><h2>Uniswap V3</h2><p>Only the aggregate residual settles through the official router and pool.</p></div>
+            </article>
+            <article class="how-node" data-how-step="5">
+              <span class="how-icon">06</span>
+              <div><h2>USDC credit</h2><p>The user receives private vault credit while the public chain sees only the aggregate output.</p></div>
+            </article>
+          </section>
+
+          <aside class="how-inspector">
+            <div class="how-card">
+              <span class="eyebrow">Current step</span>
+              <h2 id="howStepTitle">Wallet deposit</h2>
+              <p id="howStepDetail">The wallet funds the strategy with the selected ERC-20 token. This boundary is intentionally public because ERC-20 transfers are public.</p>
+              <div class="how-progress" aria-hidden="true"><span id="howProgressBar"></span></div>
+            </div>
+
+            <div class="how-disclosure-grid">
+              <div>
+                <h3>Public</h3>
+                <p id="howPublicText">Wallet, token and deposit amount.</p>
+              </div>
+              <div>
+                <h3>Private with Nox</h3>
+                <p id="howPrivateText">The future strategy intent is not revealed in calldata.</p>
+              </div>
+            </div>
+
+            <button id="replayHowDemo" class="secondary-button" type="button">Replay demo</button>
+          </aside>
+        </div>
+      </section>
+
+      <section id="contractsPanel" class="contracts-panel page-view hidden" data-page="contracts" aria-labelledby="contractsTitle">
+        <div class="contracts-heading">
+          <span class="eyebrow">Contracts</span>
+          <h2 id="contractsTitle">Verifiable Sepolia state</h2>
+        </div>
+
+        <div class="contracts-grid">
+          <section id="chainView" class="insight-card chain-view">
+            <div class="section-title">
+              <div><span class="eyebrow">Contract addresses</span><h2>Chain view</h2></div>
+              <button id="refreshChain" class="text-button" type="button">Refresh</button>
+            </div>
+            <div class="chain-rows">
+              <a id="engineLink" href="#" target="_blank" rel="noreferrer"><span>Nox strategy engine</span><code id="engineAddress">-</code></a>
+              <a id="noxComputeLink" href="#" target="_blank" rel="noreferrer"><span>NoxCompute</span><code id="noxComputeAddress">-</code></a>
+              <a id="poolLink" href="#" target="_blank" rel="noreferrer"><span>Uniswap V3 pool</span><code id="poolAddress">-</code></a>
+              <a id="routerLink" href="#" target="_blank" rel="noreferrer"><span>SwapRouter02</span><code id="routerAddress">-</code></a>
+            </div>
+            <div id="transactionList" class="transaction-list"><p>No V3 transaction in this browser session.</p></div>
+          </section>
+
+          <section id="privacyReceipt" class="insight-card privacy-receipt">
+            <span class="eyebrow">Exact disclosure boundary</span>
+            <h2>Privacy receipt</h2>
+            <div class="receipt-columns">
+              <div>
+                <h3>Publicly disclosed</h3>
+                <ul><li>Wallet and strategy existence</li><li>Deposit and withdrawal amounts</li><li>Three aggregate settlement outputs</li><li>Official Uniswap residual</li></ul>
+              </div>
+              <div>
+                <h3>Kept private</h3>
+                <ul><li>Budget, clip, limit and slippage</li><li>Direction and remaining budget</li><li>Per-user balances and allocations</li><li>Requested and matched totals</li></ul>
+              </div>
+            </div>
+          </section>
+        </div>
+      </section>
+    </div>
+
+    <div id="walletModal" class="modal-layer hidden" role="dialog" aria-modal="true" aria-labelledby="walletModalTitle">
+      <div class="wallet-panel modal-panel">
+        <div class="modal-heading"><div><span class="eyebrow">Detected extensions</span><h2 id="walletModalTitle">Connect wallet</h2></div><button id="closeWalletModal" class="icon-button" type="button" aria-label="Close wallet chooser">&times;</button></div>
+        <div id="walletList" class="wallet-list"></div>
+        <p id="walletModalStatus" class="modal-help" aria-live="polite">Choose a wallet to continue on Sepolia.</p>
+      </div>
+    </div>
+
+    <div id="strategyProgressModal" class="modal-layer hidden" role="dialog" aria-modal="true" aria-labelledby="strategyProgressTitle">
+      <div class="progress-panel modal-panel">
+        <div class="modal-heading"><div><span class="eyebrow">One-click private setup</span><h2 id="strategyProgressTitle">Creating strategy</h2></div><button id="closeStrategyProgress" class="icon-button" type="button" aria-label="Safely close progress">&times;</button></div>
+        <p>Keep this tab open. Your wallet opens automatically whenever confirmation is required.</p>
+        <div id="strategyProgressSteps" class="progress-steps"></div>
+        <div class="progress-foot"><span id="strategyElapsed">Elapsed 0:00</span><button id="retryStrategy" class="text-button hidden" type="button">Retry</button></div>
+      </div>
+    </div>
+
+    <div id="strategyReceiptModal" class="modal-layer hidden" role="dialog" aria-modal="true" aria-labelledby="strategyReceiptTitle">
+      <div class="result-panel modal-panel">
+        <span class="result-mark" aria-hidden="true">&#10003;</span>
+        <span id="strategyReceiptEvidence" class="eyebrow">Encrypted on Sepolia</span>
+        <h2 id="strategyReceiptTitle">Strategy created</h2>
+        <p id="strategyReceiptBody">Your strategy is ready for permissionless epoch execution.</p>
+        <div id="strategyHandleReceipt" class="handle-receipt"></div>
+        <div class="result-actions"><a id="strategyTxLink" href="#" target="_blank" rel="noreferrer">Open transaction</a><button id="closeStrategyReceipt" type="button">Continue</button></div>
+      </div>
+    </div>
+
+    <div id="epochProgressModal" class="modal-layer hidden" role="dialog" aria-modal="true" aria-labelledby="epochProgressTitle">
+      <div class="progress-panel modal-panel">
+        <div class="modal-heading"><div><span class="eyebrow">Permissionless execution</span><h2 id="epochProgressTitle">Advancing epoch</h2></div><button id="closeEpochProgress" class="icon-button" type="button" aria-label="Safely close epoch progress">&times;</button></div>
+        <p>Nox reveals only three aggregate settlement fields. A nonzero residual is settled through official Uniswap V3.</p>
+        <div id="epochProgressSteps" class="progress-steps"></div>
+        <div class="progress-foot"><span id="epochElapsed">Elapsed 0:00</span><button id="retryEpoch" class="text-button hidden" type="button">Retry</button></div>
+      </div>
+    </div>
+
+    <div id="finalResultModal" class="modal-layer hidden" role="dialog" aria-modal="true" aria-labelledby="finalResultTitle">
+      <div class="result-panel modal-panel">
+        <span class="result-mark" aria-hidden="true">&#10003;</span>
+        <span id="finalResultEvidence" class="eyebrow">Official settlement verified</span>
+        <h2 id="finalResultTitle">Epoch settled</h2>
+        <p id="finalResultBody">Private allocations are ready for owner decryption.</p>
+        <div class="result-actions"><a id="settlementTxLink" href="#" target="_blank" rel="noreferrer">Open settlement</a><button id="closeFinalResult" type="button">Close</button></div>
+      </div>
+    </div>
+
+    <div id="revealModal" class="modal-layer hidden" role="dialog" aria-modal="true" aria-labelledby="revealTitle">
+      <div class="reveal-panel modal-panel">
+        <div class="modal-heading"><div><span class="eyebrow">Owner-only Nox decryption</span><h2 id="revealTitle">Private state</h2></div><button id="closeReveal" class="icon-button" type="button" aria-label="Close private state">&times;</button></div>
+        <div id="privateStateGrid" class="private-state-grid"><p>Authorize this wallet to reveal its encrypted handles.</p></div>
+      </div>
+    </div>
+
+    <script type="module" src="./app.js?v=chainlink-rate-1"></script>
+  </body>
+</html>

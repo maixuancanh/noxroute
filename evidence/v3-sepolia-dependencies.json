@@ -1,0 +1,74 @@
+{
+  "status": "pass",
+  "chainId": 11155111,
+  "verifiedAtBlock": 11392626,
+  "generatedAt": "2026-07-31T23:32:54.193Z",
+  "resolvedAddresses": {
+    "noxCompute": "0x24Ef36Ec5b626D7DCD09a98F3083c2758F0F77bF",
+    "weth": "0xfFf9976782d46CC05630D1f6eBAb18b2324d6B14",
+    "usdc": "0x1c7D4B196Cb0C7B01d743Fbc6116a902379C7238",
+    "uniswapFactory": "0x0227628f3F023bb0B980b67D528571c95c6DaC1c",
+    "swapRouter02": "0x3bFA4769FB09eefC5a80d6E87c3B9C650f7Ae48E",
+    "uniswapPool": "0x3289680dD4d6C10bb19b899729cda5eEF58AEfF1"
+  },
+  "code": {
+    "noxCompute": {
+      "address": "0x24Ef36Ec5b626D7DCD09a98F3083c2758F0F77bF",
+      "codeHash": "0x9051c2db7e8a643e765dbe24abc6661bcd78bcd849f9e1f83bf5a59e95dd7438",
+      "codeBytes": 89
+    },
+    "weth": {
+      "address": "0xfFf9976782d46CC05630D1f6eBAb18b2324d6B14",
+      "codeHash": "0xc864e10689f2da18833652a3b075d43106e87f0f90d95ee64f6f0b33bc026083",
+      "codeBytes": 3124
+    },
+    "usdc": {
+      "address": "0x1c7D4B196Cb0C7B01d743Fbc6116a902379C7238",
+      "codeHash": "0xcd3f29e2ea9c61dadd48bfeaf8b2884b6de9dfee7bf45329452c4c33d0868ceb",
+      "codeBytes": 1798
+    },
+    "uniswapFactory": {
+      "address": "0x0227628f3F023bb0B980b67D528571c95c6DaC1c",
+      "codeHash": "0xacb5afea1f8877239fadd30358add13f2f9d4fb80175402c686d392295224fef",
+      "codeBytes": 24535
+    },
+    "swapRouter02": {
+      "address": "0x3bFA4769FB09eefC5a80d6E87c3B9C650f7Ae48E",
+      "codeHash": "0xe7f98ee73dfe6d5c96cbf8936920f496b1b82f24326d6a415b4144a2252271de",
+      "codeBytes": 24497
+    },
+    "uniswapPool": {
+      "address": "0x3289680dD4d6C10bb19b899729cda5eEF58AEfF1",
+      "codeHash": "0xfadf4ede8b01011fd675c19bd415a9498a66c18dd5d30c333a1d712b103f591f",
+      "codeBytes": 22142
+    }
+  },
+  "tokenMetadata": {
+    "weth": {
+      "symbol": "WETH",
+      "decimals": 18
+    },
+    "usdc": {
+      "symbol": "USDC",
+      "decimals": 6
+    }
+  },
+  "pool": {
+    "token0": "0x1c7D4B196Cb0C7B01d743Fbc6116a902379C7238",
+    "token1": "0xfFf9976782d46CC05630D1f6eBAb18b2324d6B14",
+    "fee": 500,
+    "liquidity": "19136875038863789",
+    "twapWindow": 300,
+    "tickCumulatives": [
+      "14578479151236",
+      "14578531776636"
+    ],
+    "spotTick": 175418,
+    "observationCardinality": 160
+  },
+  "deployer": {
+    "address": "0x4B96f0B001417fF56354712c6A54b737DA054A7D",
+    "balanceWei": "48107337126091352",
+    "minimumBalanceWei": "20000000000000000"
+  }
+}

@@ -1,0 +1,106 @@
+{
+  "status": "pass",
+  "chainId": 11155111,
+  "addresses": {
+    "keeper": "0x4B96f0B001417fF56354712c6A54b737DA054A7D",
+    "wethSeller": "0xbEa9933a8Bd80F220B1CaA6867101EBFEb2c45b6",
+    "usdcSeller": "0x92E386e32B64E14C4efe34Bae10f69572A9dd894",
+    "vault": "0x7ac57676aF7810358Db8a09fe0bc51C6559990f6",
+    "engine": "0x8Ff54Fbf497D48bCFba47Dd2bD36aC0F83233251",
+    "adapter": "0xed8d65bfE6b170C431A353fD74e205a1BfB50aD2"
+  },
+  "users": [
+    {
+      "role": "wethSeller",
+      "address": "0xbEa9933a8Bd80F220B1CaA6867101EBFEb2c45b6",
+      "strategyId": "0xafa9396b714ac2ad2cf53996e861746d5c7db28eb58a4e010adb10109ccf783a"
+    },
+    {
+      "role": "usdcSeller",
+      "address": "0x92E386e32B64E14C4efe34Bae10f69572A9dd894",
+      "strategyId": "0xfff410b1f79476c8c4fd25790a42818609cc5d02f346d9116f139bbc7ac362b0"
+    }
+  ],
+  "epochId": "0x68984849f6fcfb04e1772dcdb1352d93d1f6569d034b9f8632fa9cd9cc375802",
+  "handles": {
+    "publiclyDecrypted": [
+      "residualDirection",
+      "residualAmount",
+      "aggregateMinOut"
+    ],
+    "keptPrivate": [
+      "clips",
+      "limits",
+      "slippage",
+      "remaining",
+      "balances",
+      "allocations"
+    ]
+  },
+  "transactions": {
+    "createWethStrategy": "0xc990e3fc04394fa6956450a7b3df5918517ee1cd6bea389778534b505c4d0864",
+    "createUsdcStrategy": "0xd8b658b3fe45635978d87d84670b5e9e54e720a5f8ce7e3b2ea4b98e0676855d",
+    "lockEpoch": "0xea3ad346a980483d10c6d147fcbd9fc881e9214516b3bc3f77fd22a702d3ce22",
+    "finalizeAggregate": "0xd395fe536c1482a29f42fb924c7346ed578345a63e9e2a98a9ea426bce5a5770",
+    "settlement": "0xb7f3d0129bafd9eb2e3a9210f54d2a1bdca4844b3c3768d81b54e9863adb125a"
+  },
+  "uniswap": {
+    "pool": "0x3289680dD4d6C10bb19b899729cda5eEF58AEfF1",
+    "router": "0x3bFA4769FB09eefC5a80d6E87c3B9C650f7Ae48E",
+    "settlementTx": "0xb7f3d0129bafd9eb2e3a9210f54d2a1bdca4844b3c3768d81b54e9863adb125a",
+    "residualDirection": 0,
+    "residualAmount": "150000012170604",
+    "amountOutMinimum": "3579319",
+    "amountOut": "3613382",
+    "officialPoolLogEmitted": true
+  },
+  "privacySavings": {
+    "disclosure": "authorized participant E2E disclosure; not public Nox decryption",
+    "requestedQuoteWad": "20487683990500000000",
+    "matchedQuoteWad": "8436105000000000000",
+    "netResidualQuoteWad": "3615473990500000000",
+    "settlementResidualQuoteWad": "3615473990499990936",
+    "roundingDustQuoteWad": "9064"
+  },
+  "ownerDecryptedAfter": {
+    "wethSellerUsdc": "12049487",
+    "usdcSellerWeth": "349999987829396",
+    "wethSellerRemaining": "500000000000000",
+    "usdcSellerRemaining": "8436105"
+  },
+  "unauthorizedDecryptionRejected": true,
+  "replayRejected": true,
+  "verifiedAtBlock": 11392663,
+  "receipts": {
+    "createWethStrategy": {
+      "hash": "0xc990e3fc04394fa6956450a7b3df5918517ee1cd6bea389778534b505c4d0864",
+      "status": 1,
+      "blockNumber": 11392576,
+      "gasUsed": "741327"
+    },
+    "createUsdcStrategy": {
+      "hash": "0xd8b658b3fe45635978d87d84670b5e9e54e720a5f8ce7e3b2ea4b98e0676855d",
+      "status": 1,
+      "blockNumber": 11392577,
+      "gasUsed": "726421"
+    },
+    "lockEpoch": {
+      "hash": "0xea3ad346a980483d10c6d147fcbd9fc881e9214516b3bc3f77fd22a702d3ce22",
+      "status": 1,
+      "blockNumber": 11392579,
+      "gasUsed": "3574814"
+    },
+    "finalizeAggregate": {
+      "hash": "0xd395fe536c1482a29f42fb924c7346ed578345a63e9e2a98a9ea426bce5a5770",
+      "status": 1,
+      "blockNumber": 11392582,
+      "gasUsed": "139967"
+    },
+    "settlement": {
+      "hash": "0xb7f3d0129bafd9eb2e3a9210f54d2a1bdca4844b3c3768d81b54e9863adb125a",
+      "status": 1,
+      "blockNumber": 11392585,
+      "gasUsed": "1692903"
+    }
+  }
+}

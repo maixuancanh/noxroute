@@ -1,0 +1,70 @@
+{
+  "name": "NoxRoute",
+  "tagline": "Confidential recurring WETH/USDC execution with only an aggregate residual exposed to Uniswap V3.",
+  "problem": "Public recurring strategies expose direction, size, limits, cadence, and remaining budget across transactions.",
+  "noxJobs": [
+    "Persistent private strategy state across epochs",
+    "Encrypted balance sufficiency and clip eligibility",
+    "Confidential opposing-flow netting",
+    "Private post-settlement allocation and remaining balances"
+  ],
+  "privacySavings": "Authorized viewers compare viewer-authorized requested and matched volume; ordinary observers see only the aggregate public residual.",
+  "publicDecryptions": [
+    "residualDirection",
+    "residualAmount",
+    "aggregateMinOut"
+  ],
+  "publicBoundary": [
+    "Deposits and withdrawals are public",
+    "Addresses and lifecycle timing are public",
+    "Only aggregate residual and aggregateMinOut are public at finalization"
+  ],
+  "protocol": "Official Uniswap V3 contracts on Ethereum Sepolia",
+  "scope": {
+    "pair": "WETH/USDC",
+    "feeTier": "0.05%",
+    "maxStrategies": 8,
+    "cadence": "fixed"
+  },
+  "trust": "TEE/Nox trust, viewer ACL correctness, and contract correctness",
+  "limitations": [
+    "Not an anonymity system",
+    "Not mainnet-audited",
+    "Not production-ready",
+    "Sepolia test pool price and liquidity are not market-quality evidence"
+  ],
+  "artifacts": {
+    "deployment": "v3-deployment.json",
+    "deploymentEvidence": "../evidence/v3-sepolia-deployment.json",
+    "dependencyEvidence": "../evidence/v3-sepolia-dependencies.json",
+    "privacyEvidence": "../evidence/privacy-invariants-v3.json",
+    "localNoxEvidence": "../evidence/local-nox-v3.log",
+    "uiEvidence": "../evidence/ui-v3-browser.json",
+    "sepoliaE2E": {
+      "path": "../evidence/sepolia-e2e-v3.json",
+      "status": "pass"
+    },
+    "extensionWalletSmoke": {
+      "path": "../evidence/extension-wallet-smoke-2026-08-01.md",
+      "strategyPath": "../evidence/extension-wallet-strategy-2026-08-01.json",
+      "status": "extension-e2e-pass"
+    },
+    "vercelDeployment": {
+      "path": "../evidence/vercel-deployment-2026-08-02.md",
+      "url": "https://noxroute.vercel.app",
+      "status": "pass"
+    }
+  },
+  "demo": [
+    "Show the official dependency panel.",
+    "Create two encrypted strategies.",
+    "Show owner ACL decryption.",
+    "Lock the epoch.",
+    "Show exactly three aggregate public decryptions.",
+    "Compare internally matched volume with the public residual.",
+    "Open the official Uniswap transaction only when V3 E2E evidence exists.",
+    "Owner decrypts output and remaining balance.",
+    "Show an unauthorized decrypt failure.",
+    "Open the privacy receipt."
+  ]
+}

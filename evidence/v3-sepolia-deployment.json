@@ -1,0 +1,34 @@
+{
+  "status": "pass",
+  "version": "3",
+  "chainId": 11155111,
+  "deployedAt": "2026-07-31T21:01:47.318Z",
+  "deployer": "0x4B96f0B001417fF56354712c6A54b737DA054A7D",
+  "noxCompute": "0x24Ef36Ec5b626D7DCD09a98F3083c2758F0F77bF",
+  "weth": "0xfFf9976782d46CC05630D1f6eBAb18b2324d6B14",
+  "usdc": "0x1c7D4B196Cb0C7B01d743Fbc6116a902379C7238",
+  "uniswapFactory": "0x0227628f3F023bb0B980b67D528571c95c6DaC1c",
+  "uniswapPool": "0x3289680dD4d6C10bb19b899729cda5eEF58AEfF1",
+  "swapRouter02": "0x3bFA4769FB09eefC5a80d6E87c3B9C650f7Ae48E",
+  "fee": 500,
+  "twapWindow": 300,
+  "maxDeviationBps": 100,
+  "epochDuration": 300,
+  "vault": "0x7ac57676aF7810358Db8a09fe0bc51C6559990f6",
+  "engine": "0x8Ff54Fbf497D48bCFba47Dd2bD36aC0F83233251",
+  "adapter": "0xed8d65bfE6b170C431A353fD74e205a1BfB50aD2",
+  "deploymentTxs": {
+    "vault": "0x7ac91edf7f32a1408192e0326ee8f842f7daeb376c645c52ddce35fdb7fcd159",
+    "adapter": "0x8cdaa171ae071d42e3c1956f33478ae22071f9600f2ef73744b8a05de847a6dd",
+    "engine": "0x99dafb8842b3dfea65306d656bbe7b1e0b3eea7ddcba9ab164261c32295728e2",
+    "bindEngine": "0x045773d8d95815dc778cbb885d2545dd0bba51d477d4cfaf0f7f670bf748d677",
+    "bindAdapter": "0x7e524aaafdb00efd8551d562d2d03d371b228d292dc98be953b236144dbb70f0",
+    "closeBootstrap": "0xe11e178784f1f2e0466a6bae875e1b829df496c3ff0691805ab64e68374dc604"
+  },
+  "codeHashes": {
+    "vault": "0x019fc64beaacde3d1689d7896d58d8f2f004d6e9011e114ca9347c4d47282d4d",
+    "adapter": "0xcd07504266cc59c7c4aef55d696ce5d424faa7564ddb07987cac9ba4cbc844c6",
+    "engine": "0xf1f228ffa2ddaa5f4c05c672f53521dad310aacc600fa38b304973e56a23674d"
+  },
+  "verifiedAtBlock": 11391894
+}

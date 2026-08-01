@@ -1,0 +1,42 @@
+{
+  "name": "noxroute",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "hardhat build",
+    "test": "hardhat test mocha test/NoxBatchRouter.ts test/NoxBatchRouterV2.ts test/NoxveilMathV3.ts test/NoxveilEpochStateV3.ts test/NoxveilAdapterV3.ts",
+    "test:unit:v3": "hardhat test mocha test/NoxveilMathV3.ts test/NoxveilAdapterV3.ts && node --test test/NoxPluginConfigV3.test.mjs test/NoxveilPrivacyV3.test.mjs test/dapp-ui-v3.test.mjs test/demo-server-v2.test.mjs test/docs-v3.test.mjs test/security-source-v3.test.mjs test/sepolia-e2e-v3-source.test.mjs test/reconcile-v3-e2e-evidence.test.mjs",
+    "test:browser:v3": "playwright test --config=playwright.config.mjs",
+    "test:nox:local:v3:inner": "hardhat test mocha e2e/noxveil-v3-local.spec.ts",
+    "test:nox:local:v3": "wsl bash /mnt/d/dorahack/ixec/projects/nox-batch/scripts/run-nox-local-wsl.sh",
+    "test:sepolia:v3": "cross-env RUN_SEPOLIA_V3_E2E=1 hardhat test mocha e2e/noxveil-v3-sepolia.spec.ts",
+    "test:sepolia": "hardhat test e2e/batch.spec.ts",
+    "deploy:v2:sepolia": "hardhat build && node scripts/deploy-v2-sepolia.mjs",
+    "verify:v3:sepolia": "node scripts/verify-v3-sepolia-dependencies.mjs",
+    "verify:e2e:v3": "node scripts/reconcile-v3-e2e-evidence.mjs",
+    "deploy:v3:sepolia": "npm run build && npm run verify:v3:sepolia && node scripts/deploy-noxveil-v3-sepolia.mjs",
+    "fund:v3:e2e": "node scripts/fund-v3-e2e-users.mjs",
+    "demo:fill-v2": "node scripts/fill-v2-demo-batch.mjs",
+    "demo:finalize-v2": "node scripts/finalize-v2-demo-batch.mjs",
+    "typecheck": "tsc --noEmit",
+    "dapp": "python -m http.server 5173 --directory dapp",
+    "dapp:test": "python -m http.server 4173 --directory dapp",
+    "dapp:demo": "node scripts/demo-server.mjs",
+    "docs:render:v3": "node scripts/render-v3-doc-links.mjs",
+    "docs:check:v3": "node scripts/render-v3-doc-links.mjs --check"
+  },
+  "devDependencies": {
+    "@iexec-nox/handle": "0.1.0-beta.13",
+    "@iexec-nox/nox-hardhat-plugin": "0.2.0",
+    "@iexec-nox/nox-protocol-contracts": "0.2.4",
+    "@nomicfoundation/hardhat-toolbox-mocha-ethers": "^3.0.7",
+    "@openzeppelin/contracts": "5.6.1",
+    "@playwright/test": "1.61.0",
+    "@types/mocha": "^10.0.10",
+    "@types/node": "^24.10.1",
+    "cross-env": "7.0.3",
+    "hardhat": "^3.11.1",
+    "typescript": "~5.8.0"
+  }
+}

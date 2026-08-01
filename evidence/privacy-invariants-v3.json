@@ -1,0 +1,36 @@
+{
+  "status": "pass",
+  "generatedAt": "2026-07-31T23:32:35.213Z",
+  "scope": [
+    "contracts/v3",
+    "scripts/*v3*",
+    "dapp/*v3*"
+  ],
+  "privateFields": [
+    "direction",
+    "remaining",
+    "clip",
+    "limit",
+    "slippage",
+    "balances",
+    "allocations"
+  ],
+  "publicDecryptFields": [
+    "residualDirection",
+    "residualAmount",
+    "aggregateMinOut"
+  ],
+  "viewerOnlyAggregates": [
+    "totalRequestedQuote",
+    "matchedQuote"
+  ],
+  "publicBoundary": [
+    "addresses",
+    "epochTiming",
+    "participantCount",
+    "deposits",
+    "withdrawals",
+    "residualSettlement"
+  ],
+  "violations": []
+}

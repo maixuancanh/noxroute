@@ -1,0 +1,25 @@
+{
+  "status": "pass",
+  "chainId": 11155111,
+  "source": "0x4B96f0B001417fF56354712c6A54b737DA054A7D",
+  "destination": "0x018afE2Be696274bCb3A33B2FB1487F96f649bd6",
+  "weth": "0xfFf9976782d46CC05630D1f6eBAb18b2324d6B14",
+  "amountWei": "2000000000000000",
+  "amountWeth": "0.002",
+  "sourceEthBefore": "0.048107337126091352",
+  "destinationWethBefore": "0",
+  "destinationWethAfter": "2000000000000000",
+  "transactions": {
+    "wrap": {
+      "hash": "0xb48d2ec7ea839870fccf82448af92f6e18ffc3f15ea140b23388d66aad2799b3",
+      "blockNumber": 11393667,
+      "status": 1
+    },
+    "transfer": {
+      "hash": "0x9fbf79766c4ab315ea6961c7aee7fb91c7e4d3c4be370645afca3520004a9209",
+      "blockNumber": 11393668,
+      "status": 1
+    }
+  },
+  "verifiedAtBlock": 11393668
+}

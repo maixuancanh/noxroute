@@ -1,0 +1,42 @@
+{
+  "status": "pass",
+  "chainId": 11155111,
+  "addresses": {
+    "source": "0x4B96f0B001417fF56354712c6A54b737DA054A7D",
+    "keeper": "0x4B96f0B001417fF56354712c6A54b737DA054A7D",
+    "wethSeller": "0xbEa9933a8Bd80F220B1CaA6867101EBFEb2c45b6",
+    "usdcSeller": "0x92E386e32B64E14C4efe34Bae10f69572A9dd894"
+  },
+  "targets": {
+    "gasTargetWei": "18000000000000000",
+    "usdcTarget": "6000000",
+    "setupSwapWeth": "2000000000000000"
+  },
+  "before": {
+    "sourceEth": "92144984436245900",
+    "keeperEth": "92144984436245900",
+    "wethSellerEth": "0",
+    "usdcSellerEth": "0",
+    "usdcSellerUsdc": "0"
+  },
+  "after": {
+    "sourceEth": "53877614739572028",
+    "keeperEth": "53877614739572028",
+    "wethSellerEth": "18000000000000000",
+    "usdcSellerEth": "18000000000000000",
+    "usdcSellerUsdc": "48378372"
+  },
+  "officialUniswap": {
+    "pool": "0x3289680dD4d6C10bb19b899729cda5eEF58AEfF1",
+    "router": "0x3bFA4769FB09eefC5a80d6E87c3B9C650f7Ae48E",
+    "setupSwapTx": "0x9840ede421bfba065b3e741f8574425fcc19ee33b881f154220a08e2db6a3b6a"
+  },
+  "transactions": {
+    "fundWethSellerGas": "0x20e6b8c150d68b6ea03bad4b6b34bc69eb82c9deca52b426e78d36c03433389e",
+    "fundUsdcSellerGas": "0xfce20ab17eb8d7fdf1ccc46290d31ef2057330e70cea76c59fc86e45f660670e",
+    "wrapSetupWeth": "0xae3741b8e584da84f0cbadbe3efd5ea5f1ce0a6032d752dc162a12afed5e7600",
+    "approveSetupRouter": "0xa59bbe0f81f91033bd286ecedf695d2f28fa3e8990bdd02254b44bb268eb4fb8",
+    "swapSetupWethForUsdc": "0x9840ede421bfba065b3e741f8574425fcc19ee33b881f154220a08e2db6a3b6a"
+  },
+  "verifiedAtBlock": 11392543
+}

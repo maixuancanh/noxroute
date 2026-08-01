@@ -1,0 +1,23 @@
+{
+  "recordedAt": "2026-08-01T04:36:04.7233644+07:00",
+  "status": "pass",
+  "target": "http://localhost:5173",
+  "browser": "Chromium visible",
+  "title": "Noxveil — Confidential DCA on Uniswap",
+  "checks": {
+    "legacyDemoTokensAbsent": true,
+    "stealthDcaControlsToggle": true,
+    "walletChooserStatusVisible": true,
+    "walletChooserEscDismisses": true,
+    "desktopHorizontalOverflowPx": 0,
+    "mobileHorizontalOverflowPx": 0,
+    "primaryCtaHeightPx": 52,
+    "pageErrors": [],
+    "consoleErrors": []
+  },
+  "screenshots": [
+    "evidence/ui-v3-desktop.png",
+    "evidence/ui-v3-mobile.png"
+  ],
+  "boundary": "This no-extension smoke only proves that the wallet chooser and its status are visible. It does not prove a MetaMask popup, signature, or transaction flow."
+}

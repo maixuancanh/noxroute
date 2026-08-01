@@ -1,0 +1,11 @@
+{
+  "chainId": 11155111,
+  "tokenIn": "0x3d55C83ba98B0Ac4ff35ED6B7AEF016cBA299dAF",
+  "tokenOut": "0x65CA0dE623bbaf7D9a16938FcA1694F7343A6867",
+  "uniswapPool": "0x72aAe8CFeb1D7E276eb1111059da4Fd777EE6088",
+  "swapRouter02": "0x3bFA4769FB09eefC5a80d6E87c3B9C650f7Ae48E",
+  "noxEvaluator": "0xd4b0e4719cAE78D24D1De009c2F7e5D1E16a63e9",
+  "uniswapAdapter": "0x195f061789AcDb4a5456C7b4b462044aCF94A482",
+  "noxBatchRouterV2": "0xF7Ad14Ae715fEAa56c4E68fc48e094eAb7258C12",
+  "activeEpochId": "0xadafb2c2fe9725c8fbb292a404bdc5d26f75ec82b25a024ffe4c0ccdc998881a"
+}

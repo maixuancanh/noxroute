@@ -1,0 +1,67 @@
+{
+  "status": "epoch_settled_verified",
+  "chainId": 11155111,
+  "owner": "0x018afE2Be696274bCb3A33B2FB1487F96f649bd6",
+  "engine": "0x8Ff54Fbf497D48bCFba47Dd2bD36aC0F83233251",
+  "strategyId": "0x872e5a1951585f7a83c940c01c118678e314efe17c1d59720559bdf9fd1db52e",
+  "creationEpoch": "5951845",
+  "slot": 2,
+  "cancelled": false,
+  "transaction": {
+    "hash": "0xb361515246aae6fc90a9e068bfb412f18251d0550fe336d43aa0a28b35912e2b",
+    "blockNumber": 11393683,
+    "status": 1,
+    "calldataBytes": 1348
+  },
+  "privacyChecks": {
+    "fiveNonZeroStrategyHandles": true,
+    "budgetPlaintextWordAbsent": true,
+    "slippagePlaintextWordAbsent": true
+  },
+  "ownerDecryption": {
+    "status": "pass",
+    "wallet": "0x018afE2Be696274bCb3A33B2FB1487F96f649bd6",
+    "ownerAuthorized": true,
+    "fieldsRendered": 7,
+    "plaintextValuesRecorded": false,
+    "offchainSignatureOnly": true,
+    "zeroBalanceHandleHandledWithoutNoxDecrypt": true
+  },
+  "epochExecution": {
+    "status": "pass",
+    "wallet": "0x018afE2Be696274bCb3A33B2FB1487F96f649bd6",
+    "engine": "0x8Ff54Fbf497D48bCFba47Dd2bD36aC0F83233251",
+    "epochId": "0xa514c10000000000000000000000000000000000000000000000000000ac0a33",
+    "residualAmountAtoms": "632644259081195",
+    "transactions": {
+      "lockEpoch": {
+        "hash": "0x4d5439b1a2aab2554b30c5d67673b3e7045cec702c8df9a61cb35ffade00dc27",
+        "blockNumber": 11396363,
+        "status": 1,
+        "gasUsed": "4837281"
+      },
+      "finalizeAggregate": {
+        "hash": "0x10e24149251453cba68e55638e2117de2e02113bf037070f194e94cc0ae3a336",
+        "blockNumber": 11396366,
+        "status": 1,
+        "gasUsed": "140003"
+      },
+      "settleUniswapResidual": {
+        "hash": "0x9cbdcec7448b4bb5fb17f8548aa619376551497bc400d90888b2dde8920972ae",
+        "blockNumber": 11396367,
+        "status": 1,
+        "gasUsed": "2352786"
+      }
+    },
+    "uiVerification": {
+      "status": "Settled",
+      "stepsDone": [
+        "Lock epoch",
+        "Wait for Nox proof",
+        "Finalize aggregate",
+        "Settle Uniswap residual"
+      ],
+      "plaintextValuesRecorded": false
+    }
+  }
+}
